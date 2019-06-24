@@ -1,6 +1,7 @@
 package com.fmall.service;
 
 import com.fmall.common.ServerResponse;
+import com.fmall.pojo.Order;
 import com.fmall.vo.ProductIdAndQuantiry;
 import com.github.pagehelper.PageInfo;
 
@@ -71,4 +72,15 @@ public interface IOrderService {
      * @return
      */
     ServerResponse<PageInfo> selectOrderBySellerIdAndStatus(Integer buyyerId,Integer status,Integer pn);
+
+    /*
+    * 后台
+    * */
+    int queryByOrderNo(Long orderNo);
+
+    List<Order> queryAllOrders(int page, int size);
+
+    List<Order> queryOrdersByOrderNo(int page, int size, Long orderNo);
+
+    void deleteOrderById(String id);
 }

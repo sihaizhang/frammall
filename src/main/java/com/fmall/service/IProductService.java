@@ -36,4 +36,6 @@ public interface IProductService {
      * @return
      */
     ServerResponse<String> addCollection(Integer userId,Integer productId);
+
+    Product queryByProductId(int productId);
 }

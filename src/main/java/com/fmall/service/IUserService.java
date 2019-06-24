@@ -3,6 +3,8 @@ package com.fmall.service;
 import com.fmall.common.ServerResponse;
 import com.fmall.pojo.User;
 
+import java.util.List;
+
 public interface IUserService {
 
     /**
@@ -80,4 +82,31 @@ public interface IUserService {
      * @return
      */
     ServerResponse<User> getUserInfoByUserId(Integer userId);
+
+    /**
+     *
+     *   后台专用区域
+     *
+     */
+    User doAjaxLogin(User user);
+
+    List<User> queryAllBuyer(int page, int size);
+
+    List<User> queryAllSeller(int page, int size);
+
+    List<User> querySellerByName(int page, int size, String username);
+
+    List<User> queryBuyerByName(int page, int size, String username);
+
+    List<User> queryAllApply(int page, int size);
+
+    List<User> queryApplyByName(int page, int size, String username);
+
+    void applyById(String id);
+
+    void deleteBuyerById(String id);
+
+    User queryByUserId(int id);
+
+    void deleteSellerById(String id);
 }

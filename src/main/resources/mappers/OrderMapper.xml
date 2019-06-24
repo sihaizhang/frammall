@@ -49,6 +49,18 @@
     from fmall_order
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="queryAllOrders" resultType="com.fmall.pojo.Order">
+    select * from fmall_order
+  </select>
+  <select id="queryOrdersByOrderNo" resultType="com.fmall.pojo.Order">
+    select * from fmall_order
+    where
+    order_no like concat('%',#{orderNo},'%')
+  </select>
+  <delete id="deleteOrderById">
+    delete from fmall_order
+    where id =#{id}
+  </delete>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from fmall_order
     where id = #{id,jdbcType=INTEGER}

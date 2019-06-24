@@ -38,5 +38,8 @@ public class DateFormat {
         String s = whichHour();
         System.out.println(s);
     }
-
+    public static String dataToString(Date date){
+        DateTime dateTime = new DateTime(date);
+        return dateTime.toString(STANARD_RORMAT_DETAIL);
+    }
 }

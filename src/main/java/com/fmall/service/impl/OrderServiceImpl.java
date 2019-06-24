@@ -14,7 +14,6 @@ import com.fmall.util.BigDecimalUtil;
 import com.fmall.vo.OrderItemUserVo;
 import com.fmall.vo.OrderItemVo;
 import com.fmall.vo.ProductIdAndQuantiry;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -161,5 +160,28 @@ public class OrderServiceImpl implements IOrderService {
         }
         PageInfo pageInfo = new PageInfo(orderItemUserVoList);
         return ServerResponse.createBySuccess(pageInfo);
+    }
+
+
+    @Override
+    public int queryByOrderNo(Long orderNo) {
+        return orderItemMapper.queryByOrderNo(orderNo);
+    }
+
+    @Override
+    public List<Order> queryAllOrders(int page, int size) {
+        PageHelper.startPage(page,size);
+        return orderMapper.queryAllOrders();
+    }
+
+    @Override
+    public List<Order> queryOrdersByOrderNo(int page, int size, Long orderNo) {
+        PageHelper.startPage(page,size);
+        return orderMapper.queryOrdersByOrderNo(orderNo);
+    }
+
+    @Override
+    public void deleteOrderById(String id) {
+        orderMapper.deleteOrderById(id);
     }
 }

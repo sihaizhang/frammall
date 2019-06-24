@@ -219,4 +219,57 @@
     where username = #{username}
     and role = 1
   </select>
+
+  <!--后台专用-->
+  <select id="querySeller" resultType="com.fmall.pojo.User">
+     select * from fmall_user
+     where role=1
+
+    </select>
+  <select id="querySellerByName" resultType="com.fmall.pojo.User">
+    select * from fmall_user
+    where
+     username like concat('%',#{username},'%')
+     and role=1
+  </select>
+  <select id="queryBuyerByName" resultType="com.fmall.pojo.User">
+    select * from fmall_user
+    where
+     username like concat('%',#{username},'%')
+     and role=2
+  </select>
+  <select id="queryAllApply" resultType="com.fmall.pojo.User">
+    select * from fmall_user
+    where role=3
+  </select>
+  <select id="queryApplyByName" resultType="com.fmall.pojo.User">
+     select * from fmall_user
+    where
+     username like concat('%',#{username},'%')
+     and role=3
+  </select>
+  <select id="doAjaxLogin" resultType="com.fmall.pojo.User">
+     select *from fmall_user
+     where username=#{username}
+     and password=#{password}
+     and role=0
+  </select>
+  <select id="queryBuyer" resultType="com.fmall.pojo.User">
+    select * from fmall_user
+    where role=2
+  </select>
+  <update id="applyById">
+    update fmall_user set role=1
+    where id=#{id}
+  </update>
+  <delete id="deleteBuyerById">
+    delete from fmall_user
+    where id=#{id}
+    and role =2
+  </delete>
+  <delete id="deleteSellerById">
+    delete from fmall_user
+    where id =#{id}
+    and role =1
+  </delete>
 </mapper>

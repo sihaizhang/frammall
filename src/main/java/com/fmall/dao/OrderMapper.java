@@ -28,4 +28,14 @@ public interface OrderMapper {
     int updateStatusByOrderNo(@Param("status") Integer status,@Param("orderNo") Long orderNo);
 
     int checkedShippingId(Long orderNo);
+
+    /*
+    后台
+    * */
+
+    List<Order> queryAllOrders();
+
+    List<Order> queryOrdersByOrderNo(@Param("orderNo") Long orderNo);
+
+    void deleteOrderById(@Param("orderNo")String id);
 }

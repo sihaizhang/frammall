@@ -7,9 +7,12 @@ import com.fmall.dao.UserMapper;
 import com.fmall.pojo.User;
 import com.fmall.service.IUserService;
 import com.fmall.util.MD5Util;
+import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service("iUserservice")
 public class UserServiceImpl implements IUserService {
@@ -160,4 +163,76 @@ public class UserServiceImpl implements IUserService {
          user.setAnswer(StringUtils.EMPTY);
          return ServerResponse.createBySuccess(user);
      }
+
+    /**
+     * 管理员登录
+     *
+     */
+    public User doAjaxLogin(User user) {
+        user.setPassword(MD5Util.MD5EncodeUtf8(user.getPassword()));
+        return userMapper.doAjaxLogin(user);
+    }
+
+    /**
+     * 买家列表
+     *
+     */
+    public List<User> queryAllBuyer(int page,int size) {
+        PageHelper.startPage(page, size);
+        return userMapper.queryBuyer();
+    }
+
+    /**
+     * 卖家列表
+     *
+     */
+    public List<User> queryAllSeller(int page, int size) {
+        PageHelper.startPage(page,size);
+        return  userMapper.querySeller();
+    }
+
+
+    @Override
+    public List<User> querySellerByName(int page, int size, String username) {
+        PageHelper.startPage(page,size);
+        return userMapper.querySellerByName(username);
+    }
+
+    @Override
+    public List<User> queryBuyerByName(int page, int size, String username) {
+        PageHelper.startPage(page,size);
+        return userMapper.queryBuyerByName(username);
+    }
+
+    @Override
+    public List<User> queryAllApply(int page, int size) {
+        PageHelper.startPage(page,size);
+        return userMapper.queryAllApply();
+    }
+
+    @Override
+    public List<User> queryApplyByName(int page, int size, String username) {
+        PageHelper.startPage(page,size);
+        return userMapper.queryApplyByName(username);
+    }
+
+    @Override
+    public void applyById(String id) {
+        userMapper.applyById(id);
+    }
+
+    @Override
+    public void deleteBuyerById(String id) {
+        userMapper.deleteBuyerById(id);
+    }
+
+    @Override
+    public User queryByUserId(int id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void deleteSellerById(String id) {
+        userMapper.deleteSellerById(id);
+    }
 }

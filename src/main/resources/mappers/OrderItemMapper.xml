@@ -44,6 +44,10 @@
     from fmall_order_item
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="queryByOrderNo" resultType="java.lang.Integer">
+    select product_id from fmall_order_item
+      where order_no =#{orderNo}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from fmall_order_item
     where id = #{id,jdbcType=INTEGER}

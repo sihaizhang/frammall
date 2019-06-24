@@ -22,6 +22,24 @@
     from fmall_logistics
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getTemperature" resultType="java.lang.Double">
+      select temperature
+      from fmall_logistics
+      order by  create_time desc
+      limit 30
+    </select>
+  <select id="getTime" resultType="java.util.Date">
+    select create_time
+      from fmall_logistics
+      order by  create_time desc
+      limit 30
+  </select>
+  <select id="getHumidity" resultType="java.lang.Double">
+    select humidity
+      from fmall_logistics
+      order by  create_time desc
+      limit 30
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from fmall_logistics
     where id = #{id,jdbcType=INTEGER}
@@ -33,6 +51,9 @@
     values (#{id,jdbcType=INTEGER}, #{boxId,jdbcType=INTEGER}, #{temperature,jdbcType=DOUBLE}, 
       #{humidity,jdbcType=DOUBLE}, #{longitude,jdbcType=DECIMAL}, #{latitude,jdbcType=DECIMAL}, 
       now(), now())
+  </insert>
+  <insert id="insertById">
+   insert into fmall_logistics values (null ,9 ,#{id},null,null,null,now(),now())
   </insert>
   <insert id="insertSelective" parameterType="com.fmall.pojo.Logistics">
     insert into fmall_logistics

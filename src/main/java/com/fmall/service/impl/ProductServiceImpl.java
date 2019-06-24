@@ -11,7 +11,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -70,6 +69,11 @@ public class ProductServiceImpl implements IProductService {
         }
         return ServerResponse.createByErrorMessage("收藏失败");
     }
+
+    public Product queryByProductId(int productId) {
+        return productMapper.selectByPrimaryKey(productId);
+    }
+
 
 }
 

@@ -27,7 +27,8 @@
       <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
             <property name="dataSource" ref="dataSource"></property>
             <!--<property name="typeAliasesPackage" value="com.fmall.pojo"></property>-->
-            <property name="mapperLocations" value="classpath*:mappers/*Mapper.xml"></property>
+            <property name="mapperLocations" value="classpath*:mappers/*Mapper.xml"/>
+            <property name="configLocation" value="classpath:mybatis-config.xml"/>
             <property name="plugins">
                   <array>
                         <bean class="com.github.pagehelper.PageInterceptor">
@@ -44,12 +45,12 @@
       </bean>
       <!-- 扫描器 -->
       <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-            <property name="basePackage" value="com.fmall.dao"></property>
-            <property name="sqlSessionFactoryBeanName" value="factory"></property>
+            <property name="basePackage" value="com.fmall.dao"/>
+            <property name="sqlSessionFactoryBeanName" value="factory"/>
       </bean>
       <!-- 事务管理器 -->
       <bean id="txManage" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-            <property name="dataSource" ref="dataSource"></property>
+            <property name="dataSource" ref="dataSource"/>
       </bean>
       <!-- 声明式事务 -->
       <tx:advice id="txAdvice" transaction-manager="txManage">
