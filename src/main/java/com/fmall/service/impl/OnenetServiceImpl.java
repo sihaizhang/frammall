@@ -16,23 +16,36 @@ public class OnenetServiceImpl implements OnenetService {
     private LivestockMapper liveStockMapper;
 
 
-    @Override
+    /**
+     *
+     * @param id
+     */
     public void insertById(Double id) {
         logisticsMapper.insertById(id);
     }
 
-    @Override
+    /**
+     *
+     * @param i
+     * @return
+     */
     public Logistics select(int i) {
 
         return logisticsMapper.selectByPrimaryKey(i);
     }
 
-
+    /**
+     *
+     * @param liveStock
+     */
     public void sava(Livestock liveStock) {
         liveStockMapper.insert(liveStock);
     }
 
-    @Override
+    /**
+     *
+     * @param logistics
+     */
     public void save_box(Logistics logistics) {
         logisticsMapper.insert(logistics);
     }
