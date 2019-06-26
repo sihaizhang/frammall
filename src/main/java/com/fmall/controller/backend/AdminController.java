@@ -28,12 +28,22 @@ public class AdminController {
     @Autowired
     private IProductService productService;
 
+    /**
+     * 页面跳转
+     * @return
+     */
     @RequestMapping("/admin.do")
     public String login() {
 
         return "manage/login";
     }
 
+    /**
+     * 管理员登录操作
+     * @param user
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "/doAJAXLogin.do")
     @ResponseBody
     public ServerResponse<User> doAjaxLogin(User user, HttpSession session) {
@@ -48,6 +58,11 @@ public class AdminController {
 
     }
 
+    /**
+     * 管理员退出并清楚session
+     * @param session
+     * @return
+     */
     @RequestMapping("/logout.do")
     public String logout(HttpSession session) {
         //session.removeAttribute("loginUser");
@@ -55,7 +70,13 @@ public class AdminController {
         return "manage/login";
     }
 
-
+    /**
+     * 查找所有买家
+     * @param page
+     * @param size
+     * @param username
+     * @return
+     */
     @RequestMapping("/queryAllBuyer.do")
     @ResponseBody
     public ModelAndView queryAllBuyer(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size, @RequestParam(value = "username", required = false) String username) {
@@ -75,6 +96,13 @@ public class AdminController {
         return mv;
     }
 
+    /**
+     * 查找所有卖家
+     * @param page
+     * @param size
+     * @param username
+     * @return
+     */
     @RequestMapping(value = "/queryAllSeller.do", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView queryAllSeller(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size, @RequestParam(value = "username", required = false) String username) {
@@ -94,6 +122,13 @@ public class AdminController {
         return mv;
     }
 
+    /**
+     * 分页查找订单
+     * @param page
+     * @param size
+     * @param orderNo
+     * @return
+     */
     @RequestMapping("/queryAllOrders.do")
     @ResponseBody
     public ModelAndView queryAllOrders(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size,@RequestParam(value = "username",required = false)Long orderNo ) {
@@ -113,6 +148,13 @@ public class AdminController {
         return mv;
     }
 
+    /**
+     * 查找所有申请开店的用户
+     * @param page
+     * @param size
+     * @param username
+     * @return
+     */
     @RequestMapping("/queryAllApply.do")
     @ResponseBody
     public ModelAndView queryAllApply(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "10") int size, @RequestParam(value = "username", required = false) String username) {
@@ -132,30 +174,48 @@ public class AdminController {
         return mv;
     }
 
+    /**
+     * 通过id查找申请人
+     * @param id
+     */
     @RequestMapping("/applyById.do")
     public void applyById(String id) {
         userService.applyById(id);
     }
 
+    /**
+     * 通过id删除买家
+     * @param id
+     */
     @RequestMapping("/deleteBuyerById.do")
     public void deleteBuyerById(String id) {
         userService.deleteBuyerById(id);
     }
 
+    /**
+     * 通过id删除卖家
+     * @param id
+     */
     @RequestMapping("/deleteSellerById.do")
     public void deleteSellerById(String id) {
         userService.deleteSellerById(id);
     }
 
+    /**
+     * 通过id删除订单
+     * @param id
+     */
     @RequestMapping("/deleteOrderById.do")
     public void deleteOrderById(String id){
         orderService.deleteOrderById(id);
     }
 
-/*
-* 订单详情
-*
-* */
+    /**
+     * 查看订单详情
+     * @param id
+     * @param orderNo
+     * @return
+     */
     @RequestMapping("/queryByUserId.do")
     public ModelAndView queryByUserId(@RequestParam(value = "id")int id,@RequestParam(value = "orderNo")Long orderNo){
         ModelAndView mv = new ModelAndView();

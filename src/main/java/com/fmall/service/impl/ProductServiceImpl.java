@@ -4,7 +4,7 @@ import com.fmall.common.Const;
 import com.fmall.common.ServerResponse;
 import com.fmall.dao.CollectionMapper;
 import com.fmall.dao.ProductMapper;
-import com.fmall.pojo.Collection;
+import com.fmall.pojo.MyCollection;
 import com.fmall.pojo.Product;
 import com.fmall.service.IProductService;
 import com.github.pagehelper.PageHelper;
@@ -60,10 +60,10 @@ public class ProductServiceImpl implements IProductService {
     }
 
     public ServerResponse<String> addCollection(Integer userId,Integer productId){
-        Collection collection = new Collection();
-        collection.setUserId(userId);
-        collection.setProductId(productId);
-        int resultCount = collectionMapper.insert(collection);
+        MyCollection myCollection = new MyCollection();
+        myCollection.setUserId(userId);
+        myCollection.setProductId(productId);
+        int resultCount = collectionMapper.insert(myCollection);
         if(resultCount > 0){
             return ServerResponse.createBySuccessMessage("收藏成功");
         }

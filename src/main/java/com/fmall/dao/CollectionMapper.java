@@ -1,17 +1,17 @@
 package com.fmall.dao;
 
-import com.fmall.pojo.Collection;
+import com.fmall.pojo.MyCollection;
 
 public interface CollectionMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Collection record);
+    int insert(MyCollection record);
 
-    int insertSelective(Collection record);
+    int insertSelective(MyCollection record);
 
-    Collection selectByPrimaryKey(Integer id);
+    MyCollection selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(Collection record);
+    int updateByPrimaryKeySelective(MyCollection record);
 
-    int updateByPrimaryKey(Collection record);
+    int updateByPrimaryKey(MyCollection record);
 }

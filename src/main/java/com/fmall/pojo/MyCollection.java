@@ -1,19 +1,19 @@
 package com.fmall.pojo;
 
-public class Collection {
+public class MyCollection {
     private Integer id;
 
     private Integer userId;
 
     private Integer productId;
 
-    public Collection(Integer id, Integer userId, Integer productId) {
+    public MyCollection(Integer id, Integer userId, Integer productId) {
         this.id = id;
         this.userId = userId;
         this.productId = productId;
     }
 
-    public Collection() {
+    public MyCollection() {
         super();
     }
 

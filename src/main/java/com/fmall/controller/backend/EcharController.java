@@ -13,6 +13,11 @@ import java.util.*;
 public class EcharController {
     @Autowired
     private ILogisticsService logisticsService;
+
+    /**
+     * 绘制折线图
+     * @return
+     */
     @RequestMapping("/echar.do")
     @ResponseBody
     public Map<String,Object> echarShow(){

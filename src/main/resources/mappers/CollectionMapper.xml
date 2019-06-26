@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fmall.dao.CollectionMapper">
-  <resultMap id="BaseResultMap" type="com.fmall.pojo.Collection">
+  <resultMap id="BaseResultMap" type="com.fmall.pojo.MyCollection">
     <constructor>
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
@@ -21,13 +21,13 @@
     delete from fmall_collection
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.fmall.pojo.Collection">
+  <insert id="insert" parameterType="com.fmall.pojo.MyCollection">
     insert into fmall_collection (id, user_id, product_id
       )
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.fmall.pojo.Collection">
+  <insert id="insertSelective" parameterType="com.fmall.pojo.MyCollection">
     insert into fmall_collection
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -52,7 +52,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fmall.pojo.Collection">
+  <update id="updateByPrimaryKeySelective" parameterType="com.fmall.pojo.MyCollection">
     update fmall_collection
     <set>
       <if test="userId != null">
@@ -64,7 +64,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fmall.pojo.Collection">
+  <update id="updateByPrimaryKey" parameterType="com.fmall.pojo.MyCollection">
     update fmall_collection
     set user_id = #{userId,jdbcType=INTEGER},
       product_id = #{productId,jdbcType=INTEGER}
