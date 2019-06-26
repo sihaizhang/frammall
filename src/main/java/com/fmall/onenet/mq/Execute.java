@@ -93,6 +93,19 @@ public class Execute extends Thread {
                     }
 
                     Livestock liveStock = new Livestock();
+                    if (o_varieties.equals("猪")){
+                        String a = String.valueOf(o_label);
+                        a = a+"01";
+                        liveStock.setLabel(Integer.valueOf(a));
+                    }else if (o_varieties.equals("牛")){
+                        String a = String.valueOf(o_label);
+                        a = a+"02";
+                        liveStock.setLabel(Integer.valueOf(a));
+                    }else {
+                        String a = String.valueOf(o_label);
+                        a = a+"03";
+                        liveStock.setLabel(Integer.valueOf(a));
+                    }
                     liveStock.setLabel(o_label+new Random().nextInt(99));
                     liveStock.setVarieties(o_varieties);
                     liveStock.setStapleFood(o_staple_food);
